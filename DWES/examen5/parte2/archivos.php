@@ -45,7 +45,6 @@
     // Lee la primera línea de un archivo csv de ejemplo, y crea un array con cada elemento (que va separado por comas)
 
     echo "<br>EJERCICIO 5<br>";
-
     if (!$fp = fopen("file.csv", "r")) {
         echo "No se ha podido abrir el archivo";
     } else
