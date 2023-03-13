@@ -23,11 +23,3 @@ class Vehiculo
         var_dump($this);
     }
 }
-$cochazo = new Vehiculo("1080BYH", 5);
-$cochazo->ver();
-$cochazo->actualizar_matricula("8080JJJ");
-$cochazo->ver();
-$cochazo->ver_completo();
-
-//la extensión Intelephense me impide cerrrar el archivo con 
-?> //
