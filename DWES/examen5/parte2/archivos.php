@@ -31,6 +31,7 @@
     echo $serialobjetos;
 
     // Crea un array con 4 elementos y los escribes, línea a línea en el archivo. Sobreescribes lo que había
+
     echo "<br>EJERCICIO 4<br>";
     $list = array('aaa', 'bbb', 'ccc', 'dddd');
     $fp = fopen('ejemplo.txt', 'w');
@@ -38,8 +39,22 @@
     foreach ($list as $fields) {
         fwrite($fp, $fields . PHP_EOL);
     }
-
+    echo "se ha escrito en el archivo";
     fclose($fp);
+
+    // Lee la primera línea de un archivo csv de ejemplo, y crea un array con cada elemento (que va separado por comas)
+
+    echo "<br>EJERCICIO 5<br>";
+
+    if (!$fp = fopen("file.csv", "r")) {
+        echo "No se ha podido abrir el archivo";
+    } else
+        $line = fgets($fp);
+    echo $line;
+    $array_csv = explode(",", $line);
+    print_r($array_csv);
+    fclose($fp);
+
     ?>
 </body>
 
