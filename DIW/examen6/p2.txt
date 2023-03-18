@@ -1,0 +1,27 @@
+Trabajas sobre el audio sample4.mp3 disponible en https://filesamples.com/formats/mp3
+
+
+¿Cuánto dura?
+
+mplayer -identify sample4.mp3
+ID_LENGTH = 244.00 > 244 segundos > 4m:04s
+
+¿Qué codificación utiliza?
+
+Opening audio decoder: [mpg123] MPEG 1.0/2.0/2.5 layers I, II, III
+
+¿Cual es su bitrate?
+
+ID_AUDIO_BITRATE=128000
+
+Guárdalo en formato opus
+
+ffmpeg -i sample4.mp3 sample4.opus
+
+Recorta su duración a la mitad
+
+ffmpeg -i sample4.mp3 -t 122 recortado.mp3
+
+Dividelo en 4 partes iguales.
+
+ffmpeg -i sample4.mp3 -threads 3 -vcodec copy -f segment -segment_time 01:02  -reset_timestamps 1  recor_%02d.mp3
