@@ -1,0 +1,16 @@
+1. Explica en tus propias palabras qué sería una licencia CC BY NC
+Es una licencia proporcionada por Creative Commons que otorga al creador o autor de una obra una serie de derechos de autor que le permiten escoger el uso que otras personas o entidades hagan de su obra.
+
+Las siglas indican el tipo de restricción.
+"CC" simplemente significa que es una licencia Creative Commons.
+"BY" significa la preposición "por" e indica que cada vez que se cree alguna obra derivada o se utilice parte de la original, dicha obra deberá como mínimo reconocer la autoría original de la obra en la que se basó.
+"NC" significa "non commerciable", que significa que ninguna obra derivada de esta  o reproducción de la original podrá ser realizada con ánimo de lucro.
+
+Por lo tanto son obras cuyas derivadas deberán reconocer al autor original y no podrán lucrarse.
+
+
+2. Explica en tus propias palabras qué sería una licencia CC SA NC
+
+Las siglas "CC" y "NC" significan lo mencionado anteriormente.
+La sigla "SA" significa que todas las obras derivadas deberán tener la misma licencia que la original.
+Por lo tanto son obras cuyas derivadas podrán ser utilizadas para cualquier fin, pero deberán reconocer al autor original y transmitirse bajo los mismos términos de licencia Creative Commons.
