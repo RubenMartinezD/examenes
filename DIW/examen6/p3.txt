@@ -1,0 +1,37 @@
+Edición Video (p3.txt). 30 p
+Trabajas sobre el audio sample_640x360.avi disponible en https://filesamples.com/formats/avi
+
+1. ¿Cuánto dura el video y cuántos flujos de audio y video tiene?
+
+mplayer -identify sample_640x360.avi
+ID_LENGTH=13.35  (segundos.centésimas)
+Datos de ffmpeg:
+“Input #0, avi, from 'sample_640x360.avi':
+  Metadata:
+	software    	: Lavf57.83.100
+  Duration: 00:00:13.35, start: 0.000000, bitrate: 349 kb/s
+  Stream #0:0: Video: mpeg4 (Simple Profile) (FMP4 / 0x34504D46), yuv420p, 640x360 [SAR 1:1 DAR 16:9], 341 kb/s, 29.97 fps, 29.97 tbr, 29.97 tbn, 30k tbc
+Por lo tanto tiene un stream de vídeo y ninguno de audio.
+
+2. Codifícalo en webm
+
+ffmpeg -i sample_640x360.avi sampleparaweb.webm
+
+3. Extrae sólo el audio del video
+
+ffmpeg -i sample_640x360.avi sampleaudio.mp3
+Output #0, mp3, to 'sampleaudio.mp3':
+Output file #0 does not contain any stream
+No se puede porque el archivo no tiene audio.
+
+4. Recorta la duración del video a la mitad
+
+ffmpeg -i sample_640x360.avi -to 00:00:07 -c copy samplecorte.avi
+
+5. Cambia la resolución de imagen del video
+
+ffmpeg -i sample_640x360.avi -vf "scale=120x67" badres.avi
+
+6. Extrae 8 fotogramas de muestra del video
+
+ffmpeg -i sample_640x360.avi -r 0.50 capturasampleplaya_%04d.png

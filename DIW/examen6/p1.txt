@@ -1,25 +1,25 @@
 Trabajas sobre la imagen https://commons.wikimedia.org/wiki/Commons:Picture_of_the_day#/media/File:M%C3%BCnster,_LBS_--_2021_--_9804.jpg .
 
-Guárdala en formato webp.
+1. Guárdala en formato webp.
 
 PS C:\Users\Rubén\Desktop\examen> magick.exe convert '.\Münster,_LBS_--_2021_--_9804.jpg' '.\Münster,_LBS_--_2021_--_9804.webp'
 
-Guárdala en jpeg pero al 25% de calidad.
+2. Guárdala en jpeg pero al 25% de calidad.
 
 PS C:\Users\Rubén\Desktop\examen> magick.exe convert '.\Mnster,_LBS_--_2021_--_9804.jpg' -quality 70% '.\Mnster,_LBS_--_2021_--_9804.jpeg'
 
-Recorta la imagen, 500 px por arriba y 500 px por la derecha.
+3. Recorta la imagen, 500 px por arriba y 500 px por la derecha.
 
 PS C:\Users\Rubén\Desktop\examen> magick.exe '.\Mnster,_LBS_--_2021_--_9804.jpg' -crop 500x500+6220+0 '.\recortada.jpg'
 
-Rota la imagen 45% a la derecha.
+4. Rota la imagen 45% a la derecha.
 
 PS C:\Users\Rubén\Desktop\examen> magick.exe '.\Mnster,_LBS_--_2021_--_9804.jpg' -rotate 160 '.\rotatbuilding.jpg'	'
 
-Añade una marca de agua (arriba a la izquierda) que diga "Foto Examen".
+5. Añade una marca de agua (arriba a la izquierda) que diga "Foto Examen".
 
 PS C:\Users\Rubén\Desktop\examen> magick.exe '.\Mnster,_LBS_--_2021_--_9804.jpg' -background transparent -fill black -font Calibri -size 500x200 -pointsize 14 -gravity northwest -annotate +0-0 'foto examen' '.\Marcaagua.jpg'
 
-Transforma la imagen con el filtro "implode".
+6. Transforma la imagen con el filtro "implode".
 
 PS C:\Users\Rubén\Desktop\examen> magick.exe '.\Mnster,_LBS_--_2021_--_9804.jpg' -implode 3   .\implosion.jpg
