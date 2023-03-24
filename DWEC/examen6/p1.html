@@ -1,8 +1,75 @@
-Crea una aplicación (p1.html) que simule una lista de tareas sencilla, con los siguientes requerimientos (5 p por requerimiento):
+<!DOCTYPE html>
+<html lang="en-us">
 
-Un campo en el que introduces una tarea a realizar. Máximo 100 caracteres. Sólo letras, números o símbolos básicos
-Tendrá un botón con el que añadirás la tarea a la lista
-Debajo del campo y en un bloque de texto diferente, se irá construyendo la lista de tareas, una por línea
-Cada elemento de la lista tendrá un botón de «Terminado» que, una vez pulsado, tacha el elemento de la lista
-Al llegar a 10 elementos de la lista, avisará de que ya tienes 10 elementos en la lista (estén terminados o no).
-Y no te deja añadir más.
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tareas</title>
+    <style>
+        li {
+            margin-bottom: 10px;
+        }
+
+        li button {
+            font-size: 12px;
+            margin-left: 20px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Listado de tareotas</h1>
+
+    <div>
+        <p id="aviso"> </p>
+        <label for="item">Insertar tarea: </label>
+        <input type="text" name="item" id="item" pattern="_[a-zA-Z0-9]+" maxlength="100">
+        <button>Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+        var contadortareas = 0;
+        const list = document.querySelector('ul');
+        const input = document.querySelector('input');
+        const button = document.querySelector('button');
+
+        button.addEventListener('click', () => {
+            const myItem = input.value;
+            input.value = '';
+
+            const listItem = document.createElement('li');
+            const listText = document.createElement('span');
+            const listBtn = document.createElement('button');
+
+            if (contadortareas >= 10) {
+                document.getElementById("aviso").innerHTML = "No se pudo añadir la tarea. Será mejor acabar algunas antes."
+            }
+            else {
+                contadortareas++;
+                listItem.appendChild(listText);
+                listText.textContent = myItem;
+                listItem.appendChild(listBtn);
+                listBtn.textContent = 'Borrar';
+                list.appendChild(listItem);
+                document.getElementById("aviso").innerHTML = "Tarea añadida correctamente"
+
+            }
+
+            listBtn.addEventListener('click', () => {
+                list.removeChild(listItem);
+                contadortareas--
+            });
+
+            input.focus();
+            counter
+        });
+    </script>
+</body>
+
+</html>
