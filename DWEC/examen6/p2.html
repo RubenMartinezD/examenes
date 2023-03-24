@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<head>
+    <script>
+        //Funciones relacionadas con la batería
+        navigator.getBattery().then((battery) => {
+            function updateAllBatteryInfo() {
+                updateChargeInfo();
+                updateLevelInfo();
+            }
+            updateAllBatteryInfo();
+            battery.addEventListener("chargingchange", () => {
+                updateChargeInfo();
+            });
+
+            //Comprobación de si carga el pc
+            function updateChargeInfo() {
+                console.log(`Battery charging? ${battery.charging ? "Yes" : "No"}`);
+                document.getElementById("load?").innerHTML = "Está cargando el dispositivo? " + battery.charging;
+            }
+
+            battery.addEventListener("levelchange", () => {
+                updateLevelInfo();
+            });
+
+            function updateLevelInfo() {
+                console.log(`Battery level: ${battery.level * 100}%`);
+                document.getElementById("bat%").innerHTML = "La batería actual del sistema es del " + (battery.level * 100) + "%"
+                //Que no cargue la página, si está por debajo del 25 %
+
+                if ((battery.level * 100) <= 25) {
+                    document.write('<script type="text/undefined">')
+                    //no puedo probar si funciona porque estoy con un pc de sobremesa
+                }
+            }
+
+        });
+
+    </script>
+</head>
+
+<p id="browser_version"></p>
+<p id="memory"></p>
+<p id="idioma"></p>
+<p id="conex"></p>
+<p id="pdf?"></p>
+<p id="bat%"></p>
+<p id="load?"></p>
+
+<body id="cuerpito">
+    <script>
+        //Cual es la UAS (agente de usuario)?
+        //¿Cual es el sistema operativo del usuario?
+        //¿Qué versión de navegador está utilizando (o renderizado HTML)?
+        document.getElementById("browser_version").innerHTML = "El agente de usuario utilizado es " + navigator.userAgent
+
+        //¿Qué tamaño de memoria tiene el equipo ?
+        document.getElementById("memory").innerHTML = "La memoria del dispositivo es aproximadamente de " + navigator.deviceMemory + "GB";
+
+        //¿Qué lenguaje es el predeterminado del usuario ?
+        document.getElementById("idioma").innerHTML = "El idioma predeterminado del usuario son " + navigator.language;
+
+        //¿Estás cargando la página online o local(sin conexión) ?
+        document.getElementById("conex").innerHTML = "Está el navegador online?  " + navigator.onLine;
+
+        //¿Se pueden mostrar documentos PDF ?
+        document.getElementById("pdf?").innerHTML = "Es compatible este archivo con pdf?" + navigator.pdfViewerEnabled;
+
+        // Si está cargando(o no)
+        document.getElementById("load?").innerHTML
+    </script>
+</body>
+
+</html>
