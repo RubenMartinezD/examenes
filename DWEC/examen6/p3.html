@@ -20,12 +20,10 @@
             if (!(localStorage.getItem('array_posiciones'))) {
                 array_pos = ["Estos son las posiciones encontradas:", ";"]
                 localStorage.setItem('array_posiciones', array_pos)
-                console.log("array creado:" + array_pos)
             }
             else {
                 array_pos = localStorage.getItem('array_posiciones')  //localStorage dio muchos dolores de cabeza por no darme cuenta de que no deja guardar arrays.
                 document.getElementById('array_posicion').innerHTML = array_pos
-                console.log(array_pos)
                 rearray = array_pos.split(";");
                 array_pos = rearray;
             }
@@ -57,14 +55,9 @@
                 document.getElementById("pos_5").innerHTML = `<a href='` + url + `'>Consúltalo aquí</a>`;
                 var now = new Date(Date.now());
                 lista_posiciones = ("<br>A la hora " + now.toString() + " La latitud es " + crd.latitude + ", la longitud es " + crd.longitude + ", la precisión es de " + crd.accuracy + "km;")
-                console.log(lista_posiciones)
                 var array_recogido = array_pos
-                console.log("el array recogido fue" + array)
 
                 function añadirPosicion(array_pos, lista_posiciones) {
-                    console.log(array_recogido)
-                    console.log(Array.isArray(array_recogido))
-                    console.log("la lista recogida fue:" + lista_posiciones)
                     array_recogido.push(lista_posiciones);
                     localStorage.setItem('array_posiciones', array_recogido)
                     document.getElementById("array_posicion").innerHTML = array_recogido
