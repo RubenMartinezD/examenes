@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<body>
+    <picture>
+        <img class="general" src="imagenfija.jpg" alt="Imagen 800x600" width="800px" height="600px" />
+    </picture>
+    <br><br>
+    <figure>
+        <picture>
+            <source srcset="/imags/imagenfija.jpg" type="image/avif" />
+            <source srcset="/imags/imagenfija.webp" type="image/webp" />
+            <img src="/imags/imagenfija.png" />
+        </picture>
+        <figcaption>Revisa el formato de la imagen</figcaption>
+    </figure>
+
+    <br><br>
+    <picture>
+        <source srcset="/imags/imagenfijapeque.jpg" media="(max-width: 350px)" />
+        <source srcset="/imags/imagenfijamid.jpg" media="(max-width: 1024px)" />
+        <img src="/imags/imagenfija.jpg" />
+    </picture>
+
+</body>
+
+</html>
