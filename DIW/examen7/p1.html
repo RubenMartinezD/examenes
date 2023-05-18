@@ -7,15 +7,15 @@
 <body>
     <p>La primera en formato jpg, con un ancho fijo de 800 x 600 y un texto descriptivo que diga «Imagen 800x600». Además, pertenecerá a la clase «general»</p>
     <picture>
-        <img class="general" src="/imags/imagenfija.jpg" alt="Imagen 800x600" width="800px" height="600px" />
+        <img class="general" src="imags/imagenfija.jpg" alt="Imagen 800x600" width="800px" height="600px" />
     </picture>
     <br><br>
     <p>La segunda imagen, mostrará al agente de usuario tres alternativas de formato (webp, jpg y png) y añadirá el título «Revisa el formato de la imagen»</p>
     <figure>
         <picture>
-            <source srcset="/imags/imagenfija.jpg" type="image/avif" />
-            <source srcset="/imags/imagenfija.webp" type="image/webp" />
-            <img src="/imags/imagenfija.png" />
+            <source srcset="imags/imagenfija.jpg" type="image/avif" />
+            <source srcset="imags/imagenfija.webp" type="image/webp" />
+            <img src="imags/imagenfija.png" />
         </picture>
         <figcaption>Revisa el formato de la imagen</figcaption>
     </figure>
@@ -24,9 +24,9 @@
     <p>La tercera imagen, en realidad seleccionará una de entre tres alternativas, según la pantalla (supongamos un criterio por el ancho de pantalla)
     </p>
     <picture>
-        <source srcset="/imags/imagenfijapeque.jpg" media="(max-width: 350px)" />
-        <source srcset="/imags/imagenfijamid.jpg" media="(max-width: 1024px)" />
-        <img src="/imags/imagenfija.jpg" />
+        <source srcset="imags/imagenfijapeque.jpg" media="(max-width: 350px)" />
+        <source srcset="imags/imagenfijamid.jpg" media="(max-width: 1024px)" />
+        <img src="imags/imagenfija.jpg" />
     </picture>
 
 </body>

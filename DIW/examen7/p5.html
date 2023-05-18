@@ -4,61 +4,22 @@
     <meta charset="UTF-8">
 </head>
 
-<head>
-    <link rel="stylesheet" type="text/css" href="estilo.css" />
-    <style src="estilo.css"></style>
-
-</head>
-
-
 <body>
-    <canvas id="canvas" width="400" height="400"></canvas>
-
-    <br><br><br><br>
-
-    <button id="AZUL">Cambiar lienzo a azul</button>
-    <p>Crea una página web (p4.html) que contenga un lienzo de 400 x 400 pixels donde podrás pintar, usando el ratón, líneas de un color que puedas seleccionar en un botón de selección</p>
+    <video controls width="400" height="400" autoplay loop preload="auto" poster="poster.png">
+        <source src="media/mixta.mp4" type="video/mp4">
+        <track default kind="captions" srclang="es" src="media/mixta.vtt">
+        Download the
+        <a href="media/mixta.mp4">WEBM</a>
+        video.
+    </video>
+    <br>
+    <audio controls>
+        <source src="media/scream.mp3" type="audio/ogg; codecs=opus" />
+    </audio>
 
     <script>
 
-        const canvas = document.getElementById('canvas');
-        const color = document.getElementById('AZUL');
-        const ctx = canvas.getContext('2d');
-        let coord = { x: 0, y: 0 };
-        var isblue = false; //variable para determinar si el pincel es azul
-        color.addEventListener('click', cambialienzo);
-        document.addEventListener('mousedown', start);
-        document.addEventListener('mouseup', stop);
-
-        function cambialienzo() {
-            isblue = true;
-
-        }
-        function start(event) {
-            document.addEventListener('mousemove', draw);
-            reposition(event);
-        }
-
-        function reposition(event) {
-            coord.x = event.clientX;
-            coord.y = event.clientY;
-        }
-
-        function stop() {
-            document.removeEventListener('mousemove', draw);
-        }
-
-        function draw(event) {
-            ctx.beginPath();
-            ctx.lineWidth = 5;
-            ctx.lineCap = 'round';
-            if (isblue) {
-                ctx.strokeStyle = '#0000FF';
-            }
-            else { ctx.strokeStyle = '#FF0000'; }
-            ctx.moveTo(coord.x, coord.y);
-            reposition(event);
-            ctx.lineTo(coord.x, coord.y);
-            ctx.stroke();
-        }
     </script>
+</body>
+
+</html>
