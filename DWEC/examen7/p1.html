@@ -1,0 +1,29 @@
+<html>
+
+<body>
+    <h2>Using the <i> fetch() browser method </i> to fetch data from API</h2>
+
+    <button onclick="chisteRandom()"> Pedirle un chiste a la API </button>
+    <br>
+    <div id="output"> </div>
+    <script>
+        let output = document.getElementById('output');
+        function chisteRandom() {
+            fetch('https://api.chucknorris.io/jokes/random')
+                .then(response => response.json())
+                .then(data => {
+                    output.innerHTML += "chiste = " + data.value + "<br/>";
+                    output.innerHTML += "creado el = " + data.created_at + "<br/>";
+                    output.innerHTML += "category = " + data.categories + "<br/>";
+
+                })
+        }
+    </script>
+    <br> <br>
+    <input type="text" id="buscame" minlength="4" maxlength="10"></input>
+    <button id="buscar_boton" onclick="chisteBuscado()">Buscar un chiste</button>
+
+
+</body>
+
+</html>
