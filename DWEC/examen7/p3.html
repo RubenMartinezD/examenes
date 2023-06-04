@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h2>Búsqueda de imágenes en API</h2>
+    <div id="output"> </div>
+    <input type="text" id="buscame" minlength="4" maxlength="15"></input>
+    Selecciona el número de resultados :<select id="numeroOpc">
+        <option value="0">1</option>
+        <option value="1">2</option>
+        <option value="2">3</option>
+        <option value="3">4</option>
+        <option value="4">5</option>
+        <option value="5">6</option>
+        <option value="6">7</option>
+        <option value="7">8</option>
+        <option value="8">9</option>
+        <option value="9">10</option>
+    </select>
+    <br><br><button onclick="busqueda()"> Buscar imagen </button>
+    <br>
+    <div id="hueco_imagenes">
+
+    </div>
+    <script>
+        function datosImagen(event) {
+            let precodigo = event.target.outerHTML
+            let numero_imagen = event.target.attributes.value.nodeValue
+            let div_actual = document.getElementById(numero_imagen)
+            let variabila = event.view.arraye
+            let slot_full = document.getElementById("full" + numero_imagen)
+            slot_full.href = variabila[numero_imagen].urls.full
+            slot_full.hidden = false
+            let slot_mid = document.getElementById("mid" + numero_imagen)
+            slot_mid.href = variabila[numero_imagen].urls.regular
+            slot_mid.hidden = false
+            let slot_small = document.getElementById("small" + numero_imagen)
+            slot_small.href = variabila[numero_imagen].urls.small
+            slot_small.hidden = false
+            console.log(variabila[numero_imagen].urls.full)
+            div_actual.innerHTML = variabila[numero_imagen].alt_description
+            console.log(event)
+        }
+        function busqueda() {
+
+            let var_opciones = document.getElementById("numeroOpc");
+            let texto_busqueda = document.getElementById("buscame");
+            let show_imagenes = document.getElementById("hueco_imagenes");
+            let busqueda = texto_busqueda.value;
+            let num_opciones = var_opciones.value;
+            let client_ID = "ID_CLIENTE"
+            let url = 'https://api.unsplash.com/search/photos?query=' + busqueda + '&client_id=' + client_ID;
+            fetch(url, {
+                method: "GET",
+                headers: { "Content-type": "application/json; charset=UTF-8" }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    show_imagenes.innerHTML = "" //vaciar el elemento para que no se acumulen las imágenes anteriores
+                    arraye = data.results;
+                    let caso = 0
+                    miniarray = arraye.slice(caso, num_opciones) //recortar para poder seleccionar el número máximo de resultados
+                    for (i in miniarray) {
+                        let imagensita = miniarray[i].urls.thumb
+                        show_imagenes.innerHTML += "<br><br><img src=" + imagensita + " onclick='datosImagen(event) ' value=" + i + "><span id='" + i + "' style='padding-left: 50px;'>                        </span><br><br><a id='full" + i + "'hidden>Link a resolución completa</a><br><br><a id='mid" + i + "'hidden>Link a resolución mediana</a><br><br><a id='small" + i + "'hidden>Link a resolución pequeña</a>" //necesario hacer esto para poder identificar cada imagen por separado
+                        console.log(miniarray[i])
+                    }
+                })
+                .catch(err => console.log(err));
+
+        }
+
+    </script>
+</body>
+
+</html>
