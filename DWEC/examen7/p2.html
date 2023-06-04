@@ -1,0 +1,94 @@
+<html id="jokes">
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <h2>Chistes de Chuck Norris</h2>
+    <button onclick="chisteRandom()"> Pedirle un chiste a la API </button>
+    <br>
+    <div id="output"> </div>
+    <p id="codigo"></p>
+    <p id="infop" hidden></p>
+    <script>
+        let output = document.getElementById('output');
+        let status = "";
+        let codigoHTML = document.getElementById("codigo")
+        let infodiv = document.getElementById("infop");
+        let botoninfo = document.createElement('button');
+        botoninfo.hidden = true;
+        document.body.insertBefore(botoninfo, infodiv);   //inserta el botón que se acaba de crear en el documento
+        let textorespuesta = ""
+        function chisteRandom() {
+            fetch('https://api.chucknorris.io/jokes/random')
+                .then(response => response.json())          //no encontré la manera de que con promesas se me mostrara el estado HTTP con response.status y los datos devueltos de la API a la vez, siempre dejaba de leer los datos en cuanto me devuelve el 200 de la respuesta
+                .then(dato => {
+                    botoninfo.hidden = false;
+                    botoninfo.innerHTML = "Ver la información completa devuelta por la API";
+                    botoninfo.onclick = function () {
+                        if (infodiv.hidden == true) { infodiv.hidden = false; }
+                        else { infodiv.hidden = true }
+                    }
+
+                    output.innerHTML = "";
+                    output.innerHTML += "chiste = " + dato.value + "<br/>";
+                    output.innerHTML += "creado el = " + dato.created_at + "<br/>";
+                    output.innerHTML += "category = " + dato.categories + "<br/>";
+
+                    let texto = JSON.stringify(dato);
+                    console.log(texto);
+                    infodiv.innerHTML = texto;
+                })
+        }
+    </script>
+
+    <br> <br>
+</body>
+
+</html>
+<html id="weather">
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body id="cuerpote">
+    <h2>Información sobre el tiempo en Vigo</h2>
+    <br>
+    <div id="output2"> </div>
+    <script>
+        let output2 = document.getElementById('output2');
+        let infodiv2 = document.createElement('p');
+        let textoupdate = ""
+        let infoupdate = document.createElement('p');
+        function getCurrentDateAndTime() {
+            const dateTime = new Date();
+            console.log(dateTime.toLocaleString())
+            return dateTime.toLocaleString();
+        }
+        function darTiempo() {
+            let API_KEY = 'api key'
+            let url = 'https://api.openweathermap.org/data/2.5/weather?q=Vigo,es&APPID=' + API_KEY
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    let texto2 = JSON.stringify(data);
+                    console.log(texto2);
+                    infodiv2.innerHTML = texto2;
+                    document.body.insertBefore(infodiv2, output2)
+                    textoupdate = "Última actualización: " + getCurrentDateAndTime();
+
+                    infoupdate.innerHTML = textoupdate;
+                    document.body.insertBefore(infoupdate, output2)
+                })
+        }
+
+        function intervalo() { setInterval(darTiempo, 20000); }
+        darTiempo();
+        intervalo();
+    </script>
+    <br> <br>
+</body>
+
+</html>
