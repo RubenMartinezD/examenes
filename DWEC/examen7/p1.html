@@ -22,6 +22,52 @@
     <br> <br>
     <input type="text" id="buscame" minlength="4" maxlength="10"></input>
     <button id="buscar_boton" onclick="chisteBuscado()">Buscar un chiste</button>
+    <script>
+
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+        }
+        function chisteBuscado() {
+            let busqueda = document.getElementById("buscame").value;
+            console.log(busqueda)
+            let array;
+            let resultado;
+            let url = 'https://api.chucknorris.io/jokes/search?query=' + busqueda;
+            console.log(url);
+            let output2 = document.getElementById('output2');
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    array = data.result;
+                    var_elementos = (array.length - 1);   //numero de resultados de la busqueda = numero de elementos de los cuales se escogerá uno al azar
+                    index_seleccionado = getRandomInt(0, var_elementos);
+                    index_seleccionado = array[index_seleccionado];
+                    resultado = JSON.stringify(index_seleccionado);
+                    output2.innerHTML += "chiste buscado solo para ti= " + resultado + "<br/>";
+
+
+                })
+                .catch(err => console.log(err));
+        }
+    </script>
+    <div id="output2"> </div>
+    <br> <br>
+    <button id="categorias" onclick="buscarCategorias()">Mostrar las categorías de chistes</button>
+    <div id="output3"> </div>
+    <script>
+        let output3 = document.getElementById('output3');
+        function buscarCategorias() {
+            fetch('https://api.chucknorris.io/jokes/categories')
+                .then(response => response.json())
+                .then(data => {
+                    output3.innerHTML = data;
+                })
+        }
+    </script>
+    <br><br>
 
 
 </body>
