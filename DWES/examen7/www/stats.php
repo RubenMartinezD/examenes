@@ -31,6 +31,7 @@ $num_viajeros = (prepararStatement(3,$dbConn))->fetchColumn();
 $num_viajes = (prepararStatement(4,$dbConn))->fetchColumn();
 $viajoven = (prepararStatement(5,$dbConn))->fetch(PDO::FETCH_ASSOC);
 $viajesbyciudad = (prepararStatement(6,$dbConn))->fetchAll(PDO::FETCH_ASSOC);
+$dbConn = null;
 
 ?>
 <!DOCTYPE html>
