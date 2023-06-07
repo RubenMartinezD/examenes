@@ -31,6 +31,7 @@ $num_viajeros = (prepararStatement(3,$dbConn))->fetchColumn();
 $num_viajes = (prepararStatement(4,$dbConn))->fetchColumn();
 $viajoven = (prepararStatement(5,$dbConn))->fetch(PDO::FETCH_ASSOC);
 $viajesbyciudad = (prepararStatement(6,$dbConn))->fetchAll(PDO::FETCH_ASSOC);
+$dbConn = null;
 
 ?>
 <!DOCTYPE html>
@@ -41,11 +42,11 @@ $viajesbyciudad = (prepararStatement(6,$dbConn))->fetchAll(PDO::FETCH_ASSOC);
 <h1>Estadísticas de la base de datos</h1><br>
 <h3>Nombres de viajeros:<span><?php foreach ($mostrar_viajeros as $i){$nombre_viajero = $i; echo '<br>'.$nombre_viajero['nombre'];};?></span> 
 <h4>Datos de viajes:<span><?php foreach ($mostrar_viajes as $i){$datos_viaje = $i; echo '<br>ID Viaje:'.$datos_viaje['id_viaje'] 
-       . '   DNI Viajero:'.$datos_viaje['dni_viajero'] 
-       . '   ID de ciudad de partida:'.$datos_viaje['c_origen'] 
-       . '   ID de ciudad de destino:'.$datos_viaje['c_destino'] 
-       . '   Fecha de partida:'.$datos_viaje['f_salida'] 
-       . '   Fecha de llegada:'.$datos_viaje['f_llegada'] 
+       . '  - DNI Viajero:'.$datos_viaje['dni_viajero'] 
+       . '  - ID de ciudad de partida:'.$datos_viaje['c_origen'] 
+       . '  - ID de ciudad de destino:'.$datos_viaje['c_destino'] 
+       . '  - Fecha de partida:'.$datos_viaje['f_salida'] 
+       . '  - Fecha de llegada:'.$datos_viaje['f_llegada'] 
        ;};?></span> </h4>
 <h3>Número total de viajeros: <span><?php print_r($num_viajeros); ?></span> 
 <h3>Número total de viajes: <span><?php print_r($num_viajes); ?></span> 
