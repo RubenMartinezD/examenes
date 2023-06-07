@@ -1,5 +1,5 @@
 <?php
-$equipo_BD = "172.20.0.3"; 
+$equipo_BD = "IP_CONTENEDOR_POSTGRES"; 
 $nombre_BD = "viajes"; 
 $usuario_BD = "root"; 
 $password_BD = "root"; 
